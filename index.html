@@ -3,23 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Website</title>
+    <title>My Personal Page</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .card { background: white; padding: 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; max-width: 350px; width: 90%; }
-        h1 { color: #333; margin-bottom: 0.5rem; }
-        p { color: #666; margin-bottom: 1.5rem; }
-        .button { display: block; background: #007bff; color: white; padding: 12px; margin: 10px 0; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .button:hover { background: #0056b3; transform: translateY(-2px); }
+        /* This section controls how your site looks (The Design) */
+        body { 
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 85%;
+        }
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        h1 { margin: 10px 0; font-size: 28px; }
+        p { color: #666; line-height: 1.6; }
+        .links { margin-top: 25px; }
+        .btn {
+            display: block;
+            background: #764ba2;
+            color: white;
+            padding: 14px;
+            margin: 12px 0;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #667eea;
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Welcome to My Site</h1>
-        <p>Built with Gemini and GitHub Pages</p>
-        <a href="#" class="button">My Portfolio</a>
-        <a href="#" class="button">Contact Me</a>
-        <a href="#" class="button">Follow Me</a>
+
+    <div class="container">
+        <div class="profile-pic">🚀</div>
+        
+        <h1>Hi, I'm [Your Name]</h1>
+        <p>I am a creator and explorer. Welcome to my corner of the internet, built entirely on GitHub Pages.</p>
+
+        <div class="links">
+            <a href="https://instagram.com" class="btn">Follow on Instagram</a>
+            <a href="https://linkedin.com" class="btn">Connect on LinkedIn</a>
+            <a href="mailto:your@email.com" class="btn">Send me an Email</a>
+        </div>
     </div>
+
 </body>
 </html>
