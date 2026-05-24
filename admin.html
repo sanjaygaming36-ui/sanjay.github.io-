@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Dream Homes</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+      padding:40px;
+    }
+
+    h1{
+      margin-bottom:20px;
+      color:#0f172a;
+    }
+
+    .container{
+      max-width:700px;
+      margin:auto;
+      background:white;
+      padding:30px;
+      border-radius:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+    }
+
+    input, select{
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:5px;
+      font-size:16px;
+    }
+
+    button{
+      padding:12px;
+      border:none;
+      background:#2563eb;
+      color:white;
+      border-radius:5px;
+      font-size:16px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      background:#1d4ed8;
+    }
+
+    .property-list{
+      margin-top:40px;
+    }
+
+    .card{
+      background:#f9f9f9;
+      padding:15px;
+      border-radius:8px;
+      margin-bottom:15px;
+      border-left:5px solid #2563eb;
+    }
+
+    .card h3{
+      margin-bottom:8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Admin Panel</h1>
+
+    <form id="propertyForm">
+
+      <input type="text" id="title" placeholder="Property Title" required>
+
+      <input type="text" id="location" placeholder="Location" required>
+
+      <input type="text" id="price" placeholder="Price" required>
+
+      <select id="type" required>
+        <option value="">Select Property Type</option>
+        <option>Apartment</option>
+        <option>Villa</option>
+        <option>Commercial</option>
+      </select>
+
+      <button type="submit">Add Property</button>
+
+    </form>
+
+    <div class="property-list" id="propertyList">
+      <h2>Added Properties</h2>
+    </div>
+
+  </div>
+
+  <script>
+
+    const form = document.getElementById("propertyForm");
+    const propertyList = document.getElementById("propertyList");
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const title = document.getElementById("title").value;
+      const location = document.getElementById("location").value;
+      const price = document.getElementById("price").value;
+      const type = document.getElementById("type").value;
+
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <h3>${title}</h3>
+        <p><strong>Location:</strong> ${location}</p>
+        <p><strong>Price:</strong> ${price}</p>
+        <p><strong>Type:</strong> ${type}</p>
+      `;
+
+      propertyList.appendChild(card);
+
+      form.reset();
+
+      alert("Property Added Successfully!");
+
+    });
+
+  </script>
+
+</body>
+</html>
