@@ -1,105 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel</title>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-  <style>
-    body{
-      font-family:Arial;
-      background:#f4f4f4;
-      padding:40px;
-    }
-
-    .container{
-      max-width:500px;
-      margin:auto;
-      background:white;
-      padding:30px;
-      border-radius:10px;
-    }
-
-    input, button{
-      width:100%;
-      padding:12px;
-      margin-top:15px;
-    }
-
-    button{
-      background:#2563eb;
-      color:white;
-      border:none;
-      cursor:pointer;
-    }
-  </style>
+  <title>Create SafeTag</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+<div class="form-box">
 
-  <h2>Add Property</h2>
+<h2>Create Emergency Profile</h2>
 
-  <form id="propertyForm">
+<input type="text" id="name" placeholder="Full Name">
+<input type="text" id="blood" placeholder="Blood Group">
+<input type="text" id="phone" placeholder="Emergency Contact">
+<input type="text" id="allergy" placeholder="Medical Condition">
 
-    <input type="text" id="title" placeholder="Property Title" required>
-
-    <input type="text" id="location" placeholder="Location" required>
-
-    <input type="text" id="price" placeholder="Price" required>
-
-    <input type="text" id="type" placeholder="Type" required>
-
-    <input type="text" id="image" placeholder="Image URL" required>
-
-    <button type="submit">Add Property</button>
-
-  </form>
+<button onclick="saveData()">Generate SafeTag</button>
 
 </div>
 
-<script>
-
-  const SUPABASE_URL = "https://vumteazuqmxqxvqzwuwf.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_AYR5F0kKUanlIrAL6qCaLQ_GDcecWAu";
-
-  const client = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-  const form = document.getElementById("propertyForm");
-
-  form.addEventListener("submit", async (e) => {
-
-    e.preventDefault();
-
-    const property = {
-      title: document.getElementById("title").value,
-      location: document.getElementById("location").value,
-      price: document.getElementById("price").value,
-      type: document.getElementById("type").value,
-      image: document.getElementById("image").value
-    };
-
-    const { data, error } = await client
-      .from("properties")
-      .insert([property]);
-
-    if(error){
-      alert("Error Adding Property");
-      console.log(error);
-    } else {
-      alert("Property Added Successfully");
-      form.reset();
-    }
-
-  });
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
