@@ -1,113 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Dream Homes</title>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
-  <style>
-
-    body{
-      font-family:Arial;
-      background:#f4f4f4;
-      padding:40px;
-    }
-
-    h1{
-      text-align:center;
-      margin-bottom:40px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:20px;
-    }
-
-    .card{
-      background:white;
-      border-radius:10px;
-      overflow:hidden;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .card img{
-      width:100%;
-      height:200px;
-      object-fit:cover;
-    }
-
-    .content{
-      padding:20px;
-    }
-
-  </style>
-
+  <title>SafeTag India</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>Dream Homes Properties</h1>
+<header>
+  <h1>SafeTag India</h1>
+  <p>Emergency QR Medical ID</p>
+</header>
 
-<div class="grid" id="propertyGrid"></div>
+<section class="hero">
+  <h2>Your Identity Saves Lives</h2>
+  <p>Scan QR to access emergency details instantly.</p>
 
-<script>
+  <a href="admin.html" class="btn">Create SafeTag</a>
+</section>
 
-  const SUPABASE_URL = "https://vumteazuqmxqxvqzwuwf.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_AYR5F0kKUanlIrAL6qCaLQ_GDcecWAu";
+<section class="features">
 
-  const client = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+  <div class="card">
+    <h3>Emergency Contact</h3>
+    <p>Instantly notify family members.</p>
+  </div>
 
-  async function loadProperties(){
+  <div class="card">
+    <h3>Medical Info</h3>
+    <p>Blood group, allergies & conditions.</p>
+  </div>
 
-    const { data, error } = await client
-      .from("properties")
-      .select("*");
+  <div class="card">
+    <h3>QR Access</h3>
+    <p>Works with any mobile camera.</p>
+  </div>
 
-    if(error){
-      console.log(error);
-      return;
-    }
+</section>
 
-    const grid = document.getElementById("propertyGrid");
-
-    data.forEach(property => {
-
-      grid.innerHTML += `
-      
-        <div class="card">
-
-          <img src="${property.image}" alt="">
-
-          <div class="content">
-
-            <h2>${property.title}</h2>
-
-            <p>${property.location}</p>
-
-            <p>${property.type}</p>
-
-            <h3>${property.price}</h3>
-
-          </div>
-
-        </div>
-
-      `;
-
-    });
-
-  }
-
-  loadProperties();
-
-</script>
+<footer>
+  <p>© 2026 SafeTag India</p>
+</footer>
 
 </body>
 </html>
