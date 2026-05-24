@@ -1,45 +1,144 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SafeTag India</title>
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
 
-<header>
-  <h1>SafeTag India</h1>
-  <p>Emergency QR Medical ID</p>
-</header>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      SafeTag India
+    </div>
 
-<section class="hero">
-  <h2>Your Identity Saves Lives</h2>
-  <p>Scan QR to access emergency details instantly.</p>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#create">Create Tag</a></li>
+    </ul>
+  </nav>
 
-  <a href="admin.html" class="btn">Create SafeTag</a>
-</section>
+  <!-- HERO -->
+  <section class="hero">
 
-<section class="features">
+    <div class="hero-left">
+      <h1>
+        Emergency QR Medical ID
+      </h1>
 
-  <div class="card">
-    <h3>Emergency Contact</h3>
-    <p>Instantly notify family members.</p>
-  </div>
+      <p>
+        Save lives instantly with QR based emergency profile system.
+      </p>
 
-  <div class="card">
-    <h3>Medical Info</h3>
-    <p>Blood group, allergies & conditions.</p>
-  </div>
+      <a href="#create" class="hero-btn">
+        Create SafeTag
+      </a>
+    </div>
 
-  <div class="card">
-    <h3>QR Access</h3>
-    <p>Works with any mobile camera.</p>
-  </div>
+    <div class="hero-right">
 
-</section>
+      <div class="phone">
 
-<footer>
-  <p>© 2026 SafeTag India</p>
-</footer>
+        <div class="profile-card">
 
+          <h2>Raj Kumar</h2>
+
+          <p><b>Blood:</b> O+</p>
+          <p><b>Condition:</b> Diabetes</p>
+          <p><b>Emergency:</b> 9876543210</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+
+    <h2 class="section-title">
+      Why SafeTag?
+    </h2>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <h3>Emergency Access</h3>
+        <p>
+          Doctors can instantly view important medical information.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>QR Enabled</h3>
+        <p>
+          Scan from any smartphone camera instantly.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Family Safety</h3>
+        <p>
+          Emergency contacts available in seconds.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <h3>24x7 Access</h3>
+        <p>
+          Medical details available anytime anywhere.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CREATE FORM -->
+  <section class="create" id="create">
+
+    <div class="form-container">
+
+      <h2>Create Your SafeTag</h2>
+
+      <input type="text" id="name" placeholder="Full Name">
+
+      <input type="text" id="blood" placeholder="Blood Group">
+
+      <input type="text" id="condition" placeholder="Medical Condition">
+
+      <input type="text" id="phone" placeholder="Emergency Contact">
+
+      <button onclick="createTag()">
+        Generate QR Profile
+      </button>
+
+      <div id="qrcode"></div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h3>SafeTag India</h3>
+
+    <p>
+      QR Emergency Identity System
+    </p>
+
+  </footer>
+
+<script src="script.js"></script>
 </body>
 </html>
