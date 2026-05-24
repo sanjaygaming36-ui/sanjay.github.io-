@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emergency Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="profile">
+
+<h1 id="pname"></h1>
+
+<p><strong>Blood Group:</strong> <span id="pblood"></span></p>
+
+<p><strong>Emergency Contact:</strong> <span id="pphone"></span></p>
+
+<p><strong>Medical Condition:</strong> <span id="pallergy"></span></p>
+
+</div>
+
+<script>
+document.getElementById("pname").innerText =
+localStorage.getItem("name");
+
+document.getElementById("pblood").innerText =
+localStorage.getItem("blood");
+
+document.getElementById("pphone").innerText =
+localStorage.getItem("phone");
+
+document.getElementById("pallergy").innerText =
+localStorage.getItem("allergy");
+</script>
+
+</body>
+</html>
