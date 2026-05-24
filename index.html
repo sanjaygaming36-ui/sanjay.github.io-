@@ -1,94 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dream Homes Real Estate</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dream Homes</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, sans-serif;
-    }
 
     body{
+      font-family:Arial;
       background:#f4f4f4;
-      color:#333;
-    }
-
-    header{
-      background:#0f172a;
-      color:white;
-      padding:20px 50px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    header h1{
-      font-size:28px;
-    }
-
-    nav a{
-      color:white;
-      text-decoration:none;
-      margin-left:20px;
-      font-size:16px;
-    }
-
-    .hero{
-      height:80vh;
-      background:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      color:white;
-      padding:20px;
-    }
-
-    .hero-content{
-      background:rgba(0,0,0,0.6);
       padding:40px;
-      border-radius:10px;
     }
 
-    .hero h2{
-      font-size:45px;
-      margin-bottom:15px;
-    }
-
-    .hero p{
-      font-size:18px;
-      margin-bottom:20px;
-    }
-
-    .btn{
-      background:#2563eb;
-      color:white;
-      padding:12px 25px;
-      border:none;
-      border-radius:5px;
-      text-decoration:none;
-      font-size:16px;
-    }
-
-    .properties{
-      padding:60px 40px;
+    h1{
       text-align:center;
-    }
-
-    .properties h2{
       margin-bottom:40px;
-      font-size:36px;
     }
 
-    .property-grid{
+    .grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:20px;
     }
 
     .card{
@@ -104,88 +40,74 @@
       object-fit:cover;
     }
 
-    .card-content{
+    .content{
       padding:20px;
     }
 
-    .card h3{
-      margin-bottom:10px;
-    }
-
-    .card p{
-      margin-bottom:10px;
-      color:#555;
-    }
-
-    footer{
-      background:#0f172a;
-      color:white;
-      text-align:center;
-      padding:20px;
-      margin-top:40px;
-    }
   </style>
+
 </head>
 
 <body>
 
-  <header>
-    <h1>Dream Homes</h1>
+<h1>Dream Homes Properties</h1>
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Properties</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+<div class="grid" id="propertyGrid"></div>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Find Your Dream Property</h2>
-      <p>Luxury Apartments, Villas & Commercial Spaces</p>
-      <a href="#" class="btn">Explore Properties</a>
-    </div>
-  </section>
+<script>
 
-  <section class="properties">
-    <h2>Featured Properties</h2>
+  const SUPABASE_URL = "https://vumteazuqmxqxvqzwuwf.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_AYR5F0kKUanlIrAL6qCaLQ_GDcecWAu";
 
-    <div class="property-grid">
+  const client = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1200&auto=format&fit=crop" alt="">
-        <div class="card-content">
-          <h3>Modern Villa</h3>
-          <p>3 BHK Villa in Bangalore</p>
-          <p><strong>₹1.2 Cr</strong></p>
+  async function loadProperties(){
+
+    const { data, error } = await client
+      .from("properties")
+      .select("*");
+
+    if(error){
+      console.log(error);
+      return;
+    }
+
+    const grid = document.getElementById("propertyGrid");
+
+    data.forEach(property => {
+
+      grid.innerHTML += `
+      
+        <div class="card">
+
+          <img src="${property.image}" alt="">
+
+          <div class="content">
+
+            <h2>${property.title}</h2>
+
+            <p>${property.location}</p>
+
+            <p>${property.type}</p>
+
+            <h3>${property.price}</h3>
+
+          </div>
+
         </div>
-      </div>
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1200&auto=format&fit=crop" alt="">
-        <div class="card-content">
-          <h3>Luxury Apartment</h3>
-          <p>2 BHK Apartment in Whitefield</p>
-          <p><strong>₹85 Lakh</strong></p>
-        </div>
-      </div>
+      `;
 
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop" alt="">
-        <div class="card-content">
-          <h3>Commercial Office</h3>
-          <p>Office Space for Business</p>
-          <p><strong>₹2 Cr</strong></p>
-        </div>
-      </div>
+    });
 
-    </div>
-  </section>
+  }
 
-  <footer>
-    <p>© 2026 Dream Homes Real Estate. All Rights Reserved.</p>
-  </footer>
+  loadProperties();
+
+</script>
 
 </body>
 </html>
