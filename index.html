@@ -3,1011 +3,241 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SafeTag 24x7 – Emergency Identity Tag India</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<title>SpendLens - Track Every Rupee</title>
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --navy: #0F172A;
-    --navy-mid: #1E293B;
-    --navy-light: #334155;
-    --red: #DC2626;
-    --red-dark: #B91C1C;
-    --red-light: #FEE2E2;
-    --white: #FFFFFF;
-    --off-white: #F8FAFC;
-    --muted: #94A3B8;
-    --text-body: #CBD5E1;
-    --border: rgba(255,255,255,0.08);
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--font-body);
-    background: var(--navy);
-    color: var(--text-body);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 5vw;
-    background: rgba(15,23,42,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.4rem; font-weight: 800;
-    color: var(--white);
-    text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .nav-logo .dot { color: var(--red); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 0.875rem; font-weight: 400;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--white); }
-  .nav-cta {
-    background: var(--red); color: var(--white);
-    border: none; border-radius: 6px;
-    padding: 0.6rem 1.4rem;
-    font-family: var(--font-body); font-size: 0.875rem; font-weight: 500;
-    cursor: pointer; text-decoration: none;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--red-dark); }
+body{
+background:#f8fafc;
+color:#222;
+}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: flex-start;
-    padding: 8rem 5vw 5rem;
-    position: relative; overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-    background:
-      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(220,38,38,0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 80% at 10% 80%, rgba(30,41,59,0.8) 0%, transparent 70%);
-  }
-  .hero-grid {
-    position: absolute; inset: 0; z-index: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 680px; }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(220,38,38,0.15);
-    border: 1px solid rgba(220,38,38,0.3);
-    border-radius: 100px;
-    padding: 0.3rem 1rem;
-    font-size: 0.75rem; font-weight: 500; color: #FCA5A5;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em; text-transform: uppercase;
-  }
-  .hero-badge .pulse {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--red);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.4); }
-  }
-  .hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-  .hero h1 em { color: var(--red); font-style: normal; }
-  .hero-sub {
-    font-size: 1.1rem; font-weight: 300;
-    color: var(--text-body);
-    max-width: 520px;
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
-  }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--red); color: var(--white);
-    border: none; border-radius: 8px;
-    padding: 0.9rem 2rem;
-    font-family: var(--font-body); font-size: 1rem; font-weight: 500;
-    cursor: pointer; text-decoration: none;
-    transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
-  .btn-secondary {
-    background: transparent; color: var(--white);
-    border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
-    padding: 0.9rem 2rem;
-    font-family: var(--font-body); font-size: 1rem; font-weight: 400;
-    cursor: pointer; text-decoration: none;
-    transition: all 0.2s;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
-  .hero-stats {
-    display: flex; gap: 3rem; margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-  }
-  .stat-item .num {
-    font-family: var(--font-display);
-    font-size: 2rem; font-weight: 700; color: var(--white);
-    display: block;
-  }
-  .stat-item .label { font-size: 0.8rem; color: var(--muted); }
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 8%;
+background:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
 
-  /* FLOATING CARD */
-  .hero-visual {
-    position: absolute; right: 5vw; top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    display: flex; flex-direction: column; gap: 1rem;
-  }
-  .qr-card {
-    background: var(--navy-mid);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.5rem;
-    width: 240px;
-    animation: float 4s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-  .qr-box {
-    width: 120px; height: 120px;
-    background: var(--white);
-    border-radius: 8px; margin: 0 auto 1rem;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem;
-  }
-  .qr-label {
-    text-align: center; font-size: 0.75rem;
-    color: var(--muted); margin-bottom: 0.5rem;
-  }
-  .qr-name {
-    text-align: center; font-weight: 500; color: var(--white);
-    font-size: 0.9rem;
-  }
-  .scan-badge {
-    background: rgba(220,38,38,0.1);
-    border: 1px solid rgba(220,38,38,0.2);
-    border-radius: 10px; padding: 0.75rem 1rem;
-    width: 240px;
-    display: flex; align-items: center; gap: 10px;
-    animation: float 4s ease-in-out 1s infinite;
-  }
-  .scan-icon { font-size: 1.5rem; }
-  .scan-text { font-size: 0.75rem; color: #FCA5A5; font-weight: 500; }
+.logo{
+font-size:24px;
+font-weight:bold;
+color:#2563eb;
+}
 
-  /* SECTION COMMONS */
-  section { padding: 6rem 5vw; }
-  .section-label {
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--red);
-    margin-bottom: 0.75rem;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700; color: var(--white);
-    line-height: 1.2; margin-bottom: 1rem;
-  }
-  .section-sub {
-    font-size: 1rem; color: var(--muted);
-    max-width: 560px; margin-bottom: 3rem;
-    font-weight: 300; line-height: 1.8;
-  }
+.btn{
+padding:12px 24px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+text-decoration:none;
+}
 
-  /* PROBLEM SECTION */
-  .problem { background: var(--navy-mid); }
-  .problem-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2rem; align-items: center;
-  }
-  .problem-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-  .problem-item {
-    display: flex; align-items: flex-start; gap: 1rem;
-    padding: 1.25rem;
-    background: rgba(220,38,38,0.06);
-    border: 1px solid rgba(220,38,38,0.15);
-    border-radius: 12px;
-  }
-  .problem-icon { font-size: 1.25rem; flex-shrink: 0; margin-top: 2px; }
-  .problem-text { font-size: 0.9rem; color: var(--text-body); }
-  .problem-text strong { color: var(--white); display: block; margin-bottom: 2px; }
-  .solution-box {
-    background: linear-gradient(135deg, rgba(220,38,38,0.15), rgba(220,38,38,0.05));
-    border: 1px solid rgba(220,38,38,0.25);
-    border-radius: 20px; padding: 2.5rem;
-    text-align: center;
-  }
-  .solution-big {
-    font-family: var(--font-display);
-    font-size: 3rem; font-weight: 800;
-    color: var(--red); display: block; margin-bottom: 0.5rem;
-  }
-  .solution-desc { font-size: 0.9rem; color: var(--muted); }
+.hero{
+padding:80px 8%;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
 
-  /* HOW IT WORKS */
-  .steps {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
-  }
-  .step-card {
-    background: var(--navy-mid);
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 2rem 1.5rem;
-    position: relative; overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .step-card:hover { border-color: rgba(220,38,38,0.4); transform: translateY(-4px); }
-  .step-num {
-    font-family: var(--font-display);
-    font-size: 4rem; font-weight: 800;
-    color: rgba(220,38,38,0.12);
-    position: absolute; top: -0.5rem; right: 1rem;
-    line-height: 1;
-  }
-  .step-icon-wrap {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: rgba(220,38,38,0.1);
-    border: 1px solid rgba(220,38,38,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; margin-bottom: 1.25rem;
-  }
-  .step-title {
-    font-family: var(--font-display);
-    font-size: 1rem; font-weight: 600; color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-  .step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+.hero h1{
+font-size:55px;
+margin-bottom:20px;
+}
 
-  /* BENEFITS */
-  .benefits { background: var(--navy-mid); }
-  .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .benefit-group {
-    background: var(--navy);
-    border: 1px solid var(--border);
-    border-radius: 20px; padding: 2rem;
-  }
-  .benefit-group-title {
-    font-family: var(--font-display);
-    font-size: 1.1rem; font-weight: 700;
-    color: var(--white); margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .benefit-group-icon {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: rgba(220,38,38,0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
-  }
-  .benefit-items { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-  .benefit-item {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 0.85rem; color: var(--text-body);
-  }
-  .check { color: var(--red); font-weight: 700; flex-shrink: 0; }
+.hero p{
+font-size:20px;
+max-width:700px;
+margin-bottom:30px;
+}
 
-  /* PRODUCTS */
-  .products-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
-  }
-  .product-card {
-    background: var(--navy-mid);
-    border: 1px solid var(--border);
-    border-radius: 20px; overflow: hidden;
-    transition: all 0.25s;
-    position: relative;
-  }
-  .product-card:hover { border-color: rgba(220,38,38,0.4); transform: translateY(-4px); }
-  .product-card.featured { border-color: rgba(220,38,38,0.5); }
-  .product-badge {
-    position: absolute; top: 1rem; right: 1rem;
-    background: var(--red); color: var(--white);
-    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.05em;
-    text-transform: uppercase; padding: 0.25rem 0.6rem;
-    border-radius: 4px;
-  }
-  .product-visual {
-    height: 140px; background: linear-gradient(135deg, rgba(220,38,38,0.1), rgba(15,23,42,0.5));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .product-body { padding: 1.5rem; }
-  .product-name {
-    font-family: var(--font-display);
-    font-size: 1rem; font-weight: 600; color: var(--white);
-    margin-bottom: 0.25rem;
-  }
-  .product-price {
-    font-family: var(--font-display);
-    font-size: 1.6rem; font-weight: 700; color: var(--red);
-    margin-bottom: 1rem;
-  }
-  .product-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
-  .product-features li { font-size: 0.78rem; color: var(--text-body); display: flex; align-items: center; gap: 6px; }
-  .product-btn {
-    width: 100%; background: var(--red); color: var(--white);
-    border: none; border-radius: 8px; padding: 0.7rem;
-    font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
-    cursor: pointer; transition: background 0.2s;
-  }
-  .product-btn:hover { background: var(--red-dark); }
+.features{
+padding:80px 8%;
+background:white;
+}
 
-  /* USP / WHY CHOOSE */
-  .why { background: var(--navy-mid); }
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .why-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .why-item {
-    background: var(--navy);
-    border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.25rem;
-    transition: border-color 0.2s;
-  }
-  .why-item:hover { border-color: rgba(220,38,38,0.3); }
-  .why-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
-  .why-title { font-size: 0.9rem; font-weight: 500; color: var(--white); margin-bottom: 0.25rem; }
-  .why-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
-  .core-message {
-    background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(220,38,38,0.05));
-    border: 1px solid rgba(220,38,38,0.3);
-    border-radius: 20px; padding: 2.5rem;
-  }
-  .core-message blockquote {
-    font-family: var(--font-display);
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    font-weight: 700; color: var(--white);
-    line-height: 1.4; border: none; padding: 0;
-    margin-bottom: 1.5rem;
-  }
-  .core-message blockquote span { color: var(--red); }
-  .core-message p { font-size: 0.85rem; color: var(--muted); }
+.features h2{
+text-align:center;
+margin-bottom:40px;
+}
 
-  /* TESTIMONIALS */
-  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .testimonial-card {
-    background: var(--navy-mid);
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 1.75rem;
-  }
-  .stars { color: #FBBF24; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
-  .testimonial-text { font-size: 0.9rem; color: var(--text-body); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
-  .testimonial-author { display: flex; align-items: center; gap: 10px; }
-  .author-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: rgba(220,38,38,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; font-weight: 600; color: #FCA5A5;
-  }
-  .author-name { font-size: 0.85rem; font-weight: 500; color: var(--white); }
-  .author-role { font-size: 0.75rem; color: var(--muted); }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
 
-  /* FAQ */
-  .faq { background: var(--navy-mid); }
-  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .faq-item {
-    background: var(--navy);
-    border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.5rem;
-  }
-  .faq-q {
-    font-family: var(--font-display);
-    font-size: 0.95rem; font-weight: 600; color: var(--white);
-    margin-bottom: 0.75rem;
-    display: flex; align-items: flex-start; gap: 10px;
-  }
-  .faq-q .q-mark { color: var(--red); flex-shrink: 0; }
-  .faq-a { font-size: 0.85rem; color: var(--muted); line-height: 1.6; padding-left: 1.25rem; }
+.card{
+background:#f1f5f9;
+padding:25px;
+border-radius:12px;
+}
 
-  /* CTA BANNER */
-  .cta-banner {
-    text-align: center; padding: 6rem 5vw;
-    background: linear-gradient(135deg, rgba(220,38,38,0.15) 0%, transparent 60%),
-                radial-gradient(ellipse at 50% 100%, rgba(220,38,38,0.1), transparent 70%);
-    border-top: 1px solid var(--border);
-    position: relative; overflow: hidden;
-  }
-  .cta-banner::before {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-  .cta-content { position: relative; z-index: 1; }
-  .cta-banner h2 {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 800; color: var(--white);
-    margin-bottom: 1rem; line-height: 1.2;
-  }
-  .cta-banner p { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; }
+.problem{
+padding:80px 8%;
+text-align:center;
+}
 
-  /* FOOTER */
-  footer {
-    background: var(--navy-mid);
-    border-top: 1px solid var(--border);
-    padding: 3rem 5vw 2rem;
-  }
-  .footer-grid {
-    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 3rem; margin-bottom: 3rem;
-  }
-  .footer-brand .nav-logo { margin-bottom: 1rem; display: inline-block; }
-  .footer-tagline { font-size: 0.85rem; color: var(--muted); line-height: 1.7; max-width: 260px; }
-  .footer-social { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
-  .social-btn {
-    width: 38px; height: 38px; border-radius: 8px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; text-decoration: none; color: var(--muted);
-    transition: all 0.2s;
-  }
-  .social-btn:hover { background: rgba(220,38,38,0.1); border-color: rgba(220,38,38,0.3); color: var(--red); }
-  .footer-col h4 {
-    font-family: var(--font-display);
-    font-size: 0.8rem; font-weight: 600;
-    color: var(--white); letter-spacing: 0.08em;
-    text-transform: uppercase; margin-bottom: 1rem;
-  }
-  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-  .footer-links a { font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--white); }
-  .footer-bottom {
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.8rem; color: var(--muted);
-  }
+.problem ul{
+list-style:none;
+margin-top:20px;
+}
 
-  /* RESPONSIVE */
-  @media (max-width: 1024px) {
-    .hero-visual { display: none; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: repeat(2, 1fr); }
-    .products-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 768px) {
-    nav { padding: 1rem 4vw; }
-    .nav-links { display: none; }
-    section { padding: 4rem 4vw; }
-    .benefits-grid { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: 1fr; }
-    .why-features { grid-template-columns: 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .faq-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
-    .products-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 1.5rem; }
-  }
+.problem li{
+padding:10px;
+font-size:20px;
+}
 
-  /* ANIMATIONS */
-  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+.dashboard-preview{
+padding:80px 8%;
+text-align:center;
+background:white;
+}
+
+.mockup{
+height:300px;
+background:#e2e8f0;
+border-radius:15px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-top:20px;
+}
+
+.waitlist{
+padding:80px 8%;
+text-align:center;
+}
+
+input{
+width:100%;
+max-width:500px;
+padding:15px;
+margin:10px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+footer{
+padding:30px;
+background:#111827;
+color:white;
+text-align:center;
+}
 </style>
 </head>
+
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Safe<span class="dot">Tag</span> 24x7</a>
-  <ul class="nav-links">
-    <li><a href="#how-it-works">How It Works</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#benefits">Benefits</a></li>
-    <li><a href="#faq">FAQ</a></li>
-  </ul>
-  <a href="#products" class="nav-cta">Buy Now ₹299</a>
+<div class="logo">SpendLens</div>
+<a href="#" class="btn">Get Started</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="pulse"></span>
-      India's #1 Emergency Identity Tag
-    </div>
-    <h1>Your Emergency Identity When Every Second <em>Matters.</em></h1>
-    <p class="hero-sub">A smart QR-based emergency ID tag that helps first responders and loved ones access critical information instantly — no app required.</p>
-    <div class="hero-actions">
-      <a href="#products" class="btn-primary">Buy Now – ₹299 →</a>
-      <a href="#how-it-works" class="btn-secondary">▶ How It Works</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="num">₹299</span>
-        <span class="label">One-time price</span>
-      </div>
-      <div class="stat-item">
-        <span class="num">0 sec</span>
-        <span class="label">App needed to scan</span>
-      </div>
-      <div class="stat-item">
-        <span class="num">24x7</span>
-        <span class="label">Emergency access</span>
-      </div>
-      <div class="stat-item">
-        <span class="num">100%</span>
-        <span class="label">Waterproof design</span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="qr-card">
-      <div class="qr-box">
-        <svg viewBox="0 0 80 80" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="4" width="30" height="30" rx="3" fill="#0F172A" stroke="#DC2626" stroke-width="2"/>
-          <rect x="10" y="10" width="18" height="18" rx="1" fill="#DC2626"/>
-          <rect x="46" y="4" width="30" height="30" rx="3" fill="#0F172A" stroke="#DC2626" stroke-width="2"/>
-          <rect x="52" y="10" width="18" height="18" rx="1" fill="#DC2626"/>
-          <rect x="4" y="46" width="30" height="30" rx="3" fill="#0F172A" stroke="#DC2626" stroke-width="2"/>
-          <rect x="10" y="52" width="18" height="18" rx="1" fill="#DC2626"/>
-          <rect x="46" y="46" width="8" height="8" fill="#DC2626"/>
-          <rect x="60" y="46" width="8" height="8" fill="#DC2626"/>
-          <rect x="46" y="60" width="8" height="8" fill="#DC2626"/>
-          <rect x="60" y="60" width="8" height="8" fill="#DC2626"/>
-          <rect x="54" y="54" width="6" height="6" fill="#0F172A"/>
-        </svg>
-      </div>
-      <p class="qr-label">Scan in Emergency</p>
-      <p class="qr-name">🆘 SafeTag Emergency ID</p>
-    </div>
-    <div class="scan-badge">
-      <span class="scan-icon">📱</span>
-      <span class="scan-text">Any camera can scan — no app needed</span>
-    </div>
-  </div>
+<section class="hero">
+<h1>Know Exactly Where Your Money Goes</h1>
+<p>
+Automatically track spending, discover wasteful expenses,
+and take control of your finances.
+</p>
+
+<div>
+<a href="#" class="btn">Get Started Free</a>
+</div>
 </section>
 
-<!-- PROBLEM -->
-<section class="problem" id="problem">
-  <div class="fade-in">
-    <div class="section-label">The Problem</div>
-    <div class="problem-grid">
-      <div>
-        <h2 class="section-title">In an emergency,<br>every second counts.</h2>
-        <p class="section-sub">When accidents happen, first responders often face critical gaps that cost precious time — and sometimes lives.</p>
-        <ul class="problem-list">
-          <li class="problem-item">
-            <span class="problem-icon">❌</span>
-            <div class="problem-text">
-              <strong>Identity unknown</strong>
-              First responders don't know who you are or who to call.
-            </div>
-          </li>
-          <li class="problem-item">
-            <span class="problem-icon">❌</span>
-            <div class="problem-text">
-              <strong>Medical info unavailable</strong>
-              Blood group, allergies, conditions — all hidden and inaccessible.
-            </div>
-          </li>
-          <li class="problem-item">
-            <span class="problem-icon">❌</span>
-            <div class="problem-text">
-              <strong>Family notified too late</strong>
-              Your loved ones are left waiting and worrying for hours.
-            </div>
-          </li>
-          <li class="problem-item">
-            <span class="problem-icon">❌</span>
-            <div class="problem-text">
-              <strong>Precious time wasted</strong>
-              Delays in identifying patients worsen outcomes.
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="solution-box">
-        <span class="solution-big">SafeTag</span>
-        <p class="section-title" style="font-size:1.5rem; color: #fff; margin-bottom: 1rem;">connects people to your emergency information instantly.</p>
-        <p class="solution-desc">One scan. Complete information. Zero delay.<br>Designed for every Indian on the road.</p>
-        <a href="#products" class="btn-primary" style="margin-top: 2rem; display: inline-flex;">Get Protected – ₹299 →</a>
-      </div>
-    </div>
-  </div>
+<section class="problem">
+<h2>Do You Relate?</h2>
+
+<ul>
+<li>✅ Salary Credited</li>
+<li>❌ Money Disappears</li>
+<li>❌ No Idea Where It Went</li>
+<li>❌ Too Lazy For Excel Sheets</li>
+</ul>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how-it-works">
-  <div class="fade-in">
-    <div class="section-label">Process</div>
-    <h2 class="section-title">Simple. Fast. Life-saving.</h2>
-    <p class="section-sub">Set up once, protected forever. SafeTag works silently in the background until the moment it matters most.</p>
-    <div class="steps">
-      <div class="step-card">
-        <span class="step-num">01</span>
-        <div class="step-icon-wrap">🛒</div>
-        <div class="step-title">Purchase SafeTag</div>
-        <p class="step-desc">Order your SafeTag 24x7 online. Choose from helmet tag, keychain, wallet card, or sticker. Delivered to your door.</p>
-      </div>
-      <div class="step-card">
-        <span class="step-num">02</span>
-        <div class="step-icon-wrap">👤</div>
-        <div class="step-title">Create Emergency Profile</div>
-        <p class="step-desc">Fill in your name, blood group, medical conditions, emergency contacts, and any critical health information.</p>
-      </div>
-      <div class="step-card">
-        <span class="step-num">03</span>
-        <div class="step-icon-wrap">🏍️</div>
-        <div class="step-title">Attach Your Tag</div>
-        <p class="step-desc">Stick it on your helmet, clip to your keychain, place in your wallet, or affix to your bike. Waterproof and durable.</p>
-      </div>
-      <div class="step-card">
-        <span class="step-num">04</span>
-        <div class="step-icon-wrap">📱</div>
-        <div class="step-title">Instant QR Scan Access</div>
-        <p class="step-desc">Anyone with a smartphone can scan your QR and immediately access your emergency profile. No app. No login. Instant.</p>
-      </div>
-    </div>
-  </div>
+<section class="features">
+
+<h2>Features</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Smart Expense Tracking</h3>
+<p>Automatically track every transaction.</p>
+</div>
+
+<div class="card">
+<h3>Spending Dashboard</h3>
+<p>Daily, weekly and monthly spending reports.</p>
+</div>
+
+<div class="card">
+<h3>AI Insights</h3>
+<p>Understand your spending habits instantly.</p>
+</div>
+
+<div class="card">
+<h3>Category Tracking</h3>
+<p>Food, Travel, Shopping, Bills and more.</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- BENEFITS -->
-<section class="benefits" id="benefits">
-  <div class="fade-in">
-    <div class="section-label">Benefits</div>
-    <h2 class="section-title">Protection for everyone.</h2>
-    <p class="section-sub">Whether you're a rider, a parent, or a senior — SafeTag gives you and your family real peace of mind.</p>
-    <div class="benefits-grid">
-      <div class="benefit-group">
-        <div class="benefit-group-title">
-          <div class="benefit-group-icon">🏍️</div>
-          For Riders
-        </div>
-        <ul class="benefit-items">
-          <li class="benefit-item"><span class="check">✔</span> Faster identification at accident site</li>
-          <li class="benefit-item"><span class="check">✔</span> Emergency contact reached immediately</li>
-          <li class="benefit-item"><span class="check">✔</span> Blood group visible to paramedics</li>
-          <li class="benefit-item"><span class="check">✔</span> Medical allergies communicated fast</li>
-          <li class="benefit-item"><span class="check">✔</span> Road safety preparedness 24x7</li>
-        </ul>
-      </div>
-      <div class="benefit-group">
-        <div class="benefit-group-title">
-          <div class="benefit-group-icon">👨‍👩‍👧</div>
-          For Families
-        </div>
-        <ul class="benefit-items">
-          <li class="benefit-item"><span class="check">✔</span> Immediate notification in emergencies</li>
-          <li class="benefit-item"><span class="check">✔</span> Peace of mind when loved ones travel</li>
-          <li class="benefit-item"><span class="check">✔</span> Better emergency preparedness</li>
-          <li class="benefit-item"><span class="check">✔</span> Works even if phone is locked/broken</li>
-          <li class="benefit-item"><span class="check">✔</span> Covers all family members affordably</li>
-        </ul>
-      </div>
-      <div class="benefit-group">
-        <div class="benefit-group-title">
-          <div class="benefit-group-icon">👴</div>
-          For Senior Citizens
-        </div>
-        <ul class="benefit-items">
-          <li class="benefit-item"><span class="check">✔</span> Medical info always available</li>
-          <li class="benefit-item"><span class="check">✔</span> Easy identification if disoriented</li>
-          <li class="benefit-item"><span class="check">✔</span> Family contacts accessible instantly</li>
-          <li class="benefit-item"><span class="check">✔</span> Chronic conditions communicated</li>
-          <li class="benefit-item"><span class="check">✔</span> Simple — no tech knowledge needed</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<section class="dashboard-preview">
+
+<h2>Dashboard Preview</h2>
+
+<div class="mockup">
+Dashboard Screenshot Coming Soon
+</div>
+
 </section>
 
-<!-- PRODUCTS -->
-<section id="products">
-  <div class="fade-in">
-    <div class="section-label">Products</div>
-    <h2 class="section-title">Choose your SafeTag.</h2>
-    <p class="section-sub">All tags include your full emergency profile, QR access, and waterproof design. Pick what works best for you.</p>
-    <div class="products-grid">
-      <div class="product-card featured">
-        <div class="product-badge">Most Popular</div>
-        <div class="product-visual">⛑️</div>
-        <div class="product-body">
-          <div class="product-name">Helmet Tag</div>
-          <div class="product-price">₹299</div>
-          <ul class="product-features">
-            <li><span class="check">✔</span> QR Emergency Profile</li>
-            <li><span class="check">✔</span> Emergency Contacts</li>
-            <li><span class="check">✔</span> Medical Information</li>
-            <li><span class="check">✔</span> Waterproof Design</li>
-            <li><span class="check">✔</span> Strong adhesive backing</li>
-          </ul>
-          <button class="product-btn">Buy Helmet Tag</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-visual">🔑</div>
-        <div class="product-body">
-          <div class="product-name">Keychain Tag</div>
-          <div class="product-price">₹299</div>
-          <ul class="product-features">
-            <li><span class="check">✔</span> QR Emergency Profile</li>
-            <li><span class="check">✔</span> Emergency Contacts</li>
-            <li><span class="check">✔</span> Medical Information</li>
-            <li><span class="check">✔</span> Durable metal build</li>
-            <li><span class="check">✔</span> Keyring included</li>
-          </ul>
-          <button class="product-btn">Buy Keychain Tag</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-visual">💳</div>
-        <div class="product-body">
-          <div class="product-name">Wallet Card</div>
-          <div class="product-price">₹199</div>
-          <ul class="product-features">
-            <li><span class="check">✔</span> QR Emergency Profile</li>
-            <li><span class="check">✔</span> Emergency Contacts</li>
-            <li><span class="check">✔</span> Medical Information</li>
-            <li><span class="check">✔</span> Credit card size</li>
-            <li><span class="check">✔</span> Fits in any wallet</li>
-          </ul>
-          <button class="product-btn">Buy Wallet Card</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-visual">📛</div>
-        <div class="product-body">
-          <div class="product-name">QR Sticker Pack</div>
-          <div class="product-price">₹149</div>
-          <ul class="product-features">
-            <li><span class="check">✔</span> QR Emergency Profile</li>
-            <li><span class="check">✔</span> Emergency Contacts</li>
-            <li><span class="check">✔</span> Medical Information</li>
-            <li><span class="check">✔</span> Pack of 3 stickers</li>
-            <li><span class="check">✔</span> Use anywhere</li>
-          </ul>
-          <button class="product-btn">Buy Sticker Pack</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="waitlist">
+
+<h2>Join The Waitlist</h2>
+
+<form>
+
+<input type="text" placeholder="Your Name">
+
+<br>
+
+<input type="email" placeholder="Email Address">
+
+<br>
+
+<input type="tel" placeholder="Phone Number">
+
+<br>
+
+<button class="btn">
+Join Waitlist
+</button>
+
+</form>
+
 </section>
 
-<!-- WHY CHOOSE SAFETAG -->
-<section class="why" id="why">
-  <div class="fade-in">
-    <div class="why-grid">
-      <div>
-        <div class="section-label">Why SafeTag</div>
-        <h2 class="section-title">Built for India.<br>Priced for everyone.</h2>
-        <p class="section-sub">SafeTag was designed keeping Indian roads, families, and realities in mind. Simple, affordable, and truly life-saving.</p>
-        <div class="why-features">
-          <div class="why-item">
-            <div class="why-icon">💰</div>
-            <div class="why-title">Truly Affordable</div>
-            <p class="why-desc">Starting at just ₹149. Protection shouldn't be a luxury.</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">⚡</div>
-            <div class="why-title">Zero App Needed</div>
-            <p class="why-desc">Any smartphone camera scans it instantly. No downloads.</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">🛡️</div>
-            <div class="why-title">Instant Access</div>
-            <p class="why-desc">Full profile shown in seconds — no login, no delay.</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">🇮🇳</div>
-            <div class="why-title">Made for India</div>
-            <p class="why-desc">Designed for Indian families, riders, and seniors.</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">💧</div>
-            <div class="why-title">Waterproof</div>
-            <p class="why-desc">Survives rain, sweat, and outdoor conditions.</p>
-          </div>
-          <div class="why-item">
-            <div class="why-icon">🔄</div>
-            <div class="why-title">Editable Profile</div>
-            <p class="why-desc">Update your emergency details anytime from any device.</p>
-          </div>
-        </div>
-      </div>
-      <div class="core-message">
-        <blockquote>
-          "A <span>₹299 tag</span> can help your family when you cannot speak for yourself."
-        </blockquote>
-        <p>This isn't just a QR sticker. It's a lifeline. Every rider, every senior, every family member who travels alone deserves this protection. SafeTag gives you a voice when you need it most.</p>
-        <a href="#products" class="btn-primary" style="margin-top: 2rem; display: inline-flex;">Get SafeTag Now →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="fade-in">
-    <div class="section-label">Reviews</div>
-    <h2 class="section-title">Trusted by Indian families.</h2>
-    <p class="section-sub">Real stories from riders, parents, and families across India.</p>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"An excellent safety product for every rider. After my friend's accident, this was the first thing I got. Now I feel prepared whenever I ride."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">RK</div>
-          <div>
-            <div class="author-name">Rahul Kumar</div>
-            <div class="author-role">Daily rider, Bengaluru</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Gives peace of mind when my parents travel alone. My father is 68 with diabetes — knowing his info is on his keychain is priceless."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">PM</div>
-          <div>
-            <div class="author-name">Priya Mehta</div>
-            <div class="author-role">Working professional, Mumbai</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Got one for my entire family. The setup was simple and the card fits perfectly in my wallet. If anything ever happens, I know my family will be reached."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">AS</div>
-          <div>
-            <div class="author-name">Arjun Sharma</div>
-            <div class="author-role">Father of 2, Hyderabad</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="fade-in">
-    <div class="section-label">FAQ</div>
-    <h2 class="section-title">Common questions.</h2>
-    <p class="section-sub">Everything you need to know about SafeTag 24x7.</p>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <div class="faq-q"><span class="q-mark">Q</span> What is SafeTag 24x7?</div>
-        <p class="faq-a">SafeTag is a QR-based emergency identity tag. When scanned, it immediately shows your emergency contacts, blood group, medical conditions, and other critical information to first responders or bystanders.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="q-mark">Q</span> Does the scanner need an app?</div>
-        <p class="faq-a">No. Any smartphone camera — iPhone or Android — can scan the QR code directly. No app download, no login. Your information appears instantly in any browser.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="q-mark">Q</span> Who can use SafeTag?</div>
-        <p class="faq-a">Anyone! Riders, students, working professionals, senior citizens, children — SafeTag is designed for every Indian. If you or someone you love travels, SafeTag is for you.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="q-mark">Q</span> Is my data private and secure?</div>
-        <p class="faq-a">Yes. Only the information you choose to share is visible when scanned. Your profile is encrypted and you control exactly what is displayed in an emergency.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="q-mark">Q</span> Can I update my emergency profile?</div>
-        <p class="faq-a">Absolutely. Log in to your SafeTag account from any device to update your medical information, contacts, or any other details at any time. Changes take effect immediately.</p>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="q-mark">Q</span> How durable are the tags?</div>
-        <p class="faq-a">All SafeTag products are waterproof and built for outdoor use. The helmet tag has a strong adhesive, the keychain is made of durable metal, and all QR codes are UV and scratch-resistant.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<section class="cta-banner">
-  <div class="cta-content fade-in">
-    <h2>Protect Yourself &<br>Your Loved Ones Today</h2>
-    <p>Join thousands of Indian families who travel with confidence. Starting at just ₹149.</p>
-    <a href="#products" class="btn-primary" style="font-size:1.1rem; padding: 1rem 2.5rem;">Get Your SafeTag Now →</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#" class="nav-logo">Safe<span class="dot">Tag</span> 24x7</a>
-      <p class="footer-tagline">India's trusted QR-based emergency identity solution. Because your family deserves to know, when you cannot tell them.</p>
-      <div class="footer-social">
-        <a href="#" class="social-btn" aria-label="Instagram">📸</a>
-        <a href="#" class="social-btn" aria-label="WhatsApp">💬</a>
-        <a href="#" class="social-btn" aria-label="Facebook">📘</a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul class="footer-links">
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Our Mission</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Press Kit</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Products</h4>
-      <ul class="footer-links">
-        <li><a href="#">Helmet Tag</a></li>
-        <li><a href="#">Keychain Tag</a></li>
-        <li><a href="#">Wallet Card</a></li>
-        <li><a href="#">QR Sticker Pack</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <ul class="footer-links">
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-        <li><a href="#">Refund Policy</a></li>
-        <li><a href="#">Shipping Policy</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 SafeTag 24x7. All rights reserved. Made with ❤️ in India.</span>
-    <span>📞 Support: +91 XXXXX XXXXX &nbsp;|&nbsp; ✉ hello@safetag.in</span>
-  </div>
+
+<p>© 2026 SpendLens. All Rights Reserved.</p>
+
 </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
-
-  document.querySelectorAll('.product-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.textContent = '✔ Added to cart!';
-      btn.style.background = '#15803D';
-      setTimeout(() => {
-        btn.textContent = btn.textContent.replace('✔ Added to cart!', 'Buy Now');
-        btn.style.background = '';
-        const tagName = btn.closest('.product-card').querySelector('.product-name').textContent;
-        btn.textContent = 'Buy ' + tagName.split(' ').slice(0,1).join(' ') + ' Tag';
-      }, 1800);
-    });
-  });
-</script>
 </body>
 </html>
